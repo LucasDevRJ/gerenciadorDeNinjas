@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Menu {
     Ninja[] ninjas = new Ninja[10];
+    int[] indiceNinjas = new int[10];
+    Uchiha[] uchihas = new Uchiha[10];
+    int[] indiceUchihas = new int[10];
     int indice = 0;
 
     public static void main(String[] args) {
@@ -16,8 +19,9 @@ public class Menu {
             System.out.println("1 - Adicionar Ninja.");
             System.out.println("2 - Adicionar Uchiha");
             System.out.println("3 - Exibir informações de todos os Ninjas.");
-            System.out.println("3 - Atualizar habilidades especiais.");
-            System.out.println("4 - Sair.");
+            System.out.println("4 - Exibir informações de todos os Uchihas.");
+            System.out.println("5 - Atualizar habilidades especiais");
+            System.out.println("6 - Sair.");
             System.out.println("------------------------------------");
             System.out.print("Digite a opção desejada: ");
 
@@ -36,10 +40,23 @@ public class Menu {
                 case 3:
                     exibirInformacoesDosNinjas();
                     break;
+
+                case 4:
+                    exibirInformacoesDosUchihas();
+                    break;
+
+                case 5:
+                    atualizarHabilidadeEspecial(entrada);
+                    break;
+
+                case 6:
+                    finalizarPrograma();
+                    break;
+
                 default:
                     System.out.println("Opção inválida.");
             }
-        } while (opcao != 4);
+        } while (opcao != 6);
     }
 
     public void adicionarNinja(Scanner entrada) {
@@ -48,6 +65,7 @@ public class Menu {
         preencheInformacoesDoNinja(entrada, ninja);
 
         ninjas[indice] = ninja;
+        indiceNinjas[indice] = indice;
         indice++;
 
         System.out.println("O Ninja " + ninja.nome + " foi cadastrado com sucesso.");
@@ -61,7 +79,8 @@ public class Menu {
         System.out.print("Digite a habilidade especial: ");
         uchiha.habilidadeEspecial = entrada.nextLine();
 
-        ninjas[indice] = uchiha;
+        uchihas[indice] = uchiha;
+        indiceUchihas[indice] = indice;
         indice++;
 
         System.out.println("O Uchiha " + uchiha.nome + " foi adicionado com sucesso.");
@@ -73,18 +92,49 @@ public class Menu {
         System.out.print("Digite o nome do ninja: ");
         ninja.nome = entrada.nextLine();
 
+        while (ninja.nome == "") {
+            System.out.println("Digite o nome do ninja!");
+            System.out.print("Digite o nome do ninja: ");
+            ninja.nome = entrada.nextLine();
+        }
+
         System.out.print("Digite a idade do ninja: ");
         ninja.idade = entrada.nextInt();
 
+        while (ninja.idade < 0) {
+            System.out.println("Digite uma idade válida!");
+            System.out.print("Digite a idade do ninja: ");
+            ninja.idade = entrada.nextInt();
+        }
+
         entrada.nextLine();
+
         System.out.print("Digite a missão do ninja: ");
         ninja.missao = entrada.nextLine();
+
+        while (ninja.missao == "") {
+            System.out.println("Digite a missão do ninja!");
+            System.out.print("Digite a missão do ninja: ");
+            ninja.missao = entrada.nextLine();
+        }
 
         System.out.print("Digite o nível de dificuldade da missão: ");
         ninja.nivelDeDificuldade = entrada.nextLine();
 
+        while (ninja.nivelDeDificuldade == "") {
+            System.out.println("Digite o nível de dificuldade da missão!");
+            System.out.print("Digite o nível de dificuldade da missão: ");
+            ninja.nivelDeDificuldade = entrada.nextLine();
+        }
+
         System.out.print("Digite o status da missão: ");
         ninja.statusDaMissao = entrada.nextLine();
+
+        while (ninja.statusDaMissao == "") {
+            System.out.println("Digite o status da missão!");
+            System.out.print("Digite o status da missão: ");
+            ninja.statusDaMissao = entrada.nextLine();
+        }
     }
 
     public void exibirInformacoesDosNinjas() {
@@ -94,5 +144,37 @@ public class Menu {
                 System.out.println();
             }
         }
+    }
+
+    public void exibirInformacoesDosUchihas() {
+        for (int i = 0; i < uchihas.length; i++) {
+            if (uchihas[i] != null) {
+                uchihas[i].mostrarInformacoes();
+                System.out.println("Posição: " + indiceUchihas[indice]);
+                System.out.println();
+            }
+        }
+    }
+
+    public void atualizarHabilidadeEspecial(Scanner entrada) {
+        System.out.print("Digite a posição do Uchiha que deseja atualizar a habilidade: ");
+        int posicao = entrada.nextInt();
+        entrada.nextLine();
+        boolean posicaoInexistente = true;
+        for (int i = 0; i < uchihas.length; i++) {
+            if (posicao == indiceUchihas[indice] && uchihas[i] != null) {
+                System.out.print("Digite a habilidade especial: ");
+                uchihas[i].habilidadeEspecial = entrada.nextLine();
+                posicaoInexistente = false;
+            }
+        }
+
+        if (posicaoInexistente) {
+            System.out.println("Posição inválida!");
+        }
+    }
+
+    public void finalizarPrograma() {
+        System.out.println("Programa finalizado.");
     }
 }
