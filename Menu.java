@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
@@ -6,7 +5,8 @@ public class Menu {
     int[] indiceNinjas = new int[10];
     Uchiha[] uchihas = new Uchiha[10];
     int[] indiceUchihas = new int[10];
-    int indice = 0;
+    int indiceNinja = 0;
+    int indiceUchiha = 0;
 
     public static void main(String[] args) {
         Menu menu = new Menu();
@@ -64,9 +64,9 @@ public class Menu {
 
         preencheInformacoesDoNinja(entrada, ninja);
 
-        ninjas[indice] = ninja;
-        indiceNinjas[indice] = indice;
-        indice++;
+        ninjas[indiceNinja] = ninja;
+        indiceNinjas[indiceNinja] = indiceNinja;
+        indiceNinja++;
 
         System.out.println("O Ninja " + ninja.nome + " foi cadastrado com sucesso.");
     }
@@ -79,10 +79,17 @@ public class Menu {
         System.out.print("Digite a habilidade especial: ");
         uchiha.habilidadeEspecial = entrada.nextLine();
 
-        uchihas[indice] = uchiha;
-        indiceUchihas[indice] = indice;
-        indice++;
+        while (uchiha.habilidadeEspecial == "") {
+            System.out.println("Digite a habilidade especial!");
+            System.out.print("Digite a habilidade especial: ");
+            uchiha.habilidadeEspecial = entrada.nextLine();
+        }
 
+        uchihas[indiceUchiha] = uchiha;
+        indiceUchihas[indiceUchiha] = indiceUchiha;
+        System.out.println(indiceUchihas[indiceUchiha]);
+        indiceUchiha++;
+        System.out.println(indiceUchiha);
         System.out.println("O Uchiha " + uchiha.nome + " foi adicionado com sucesso.");
     }
 
@@ -138,39 +145,46 @@ public class Menu {
     }
 
     public void exibirInformacoesDosNinjas() {
-        for (int i = 0; i < ninjas.length; i++) {
-            if (ninjas[i] != null) {
+        if (indiceNinja > 0) {
+            for (int i = 0; i < indiceNinja; i++) {
                 ninjas[i].mostrarInformacoes();
                 System.out.println();
             }
+        } else {
+            System.out.println("Não há ninjas cadastrados.");
         }
     }
 
     public void exibirInformacoesDosUchihas() {
-        for (int i = 0; i < uchihas.length; i++) {
-            if (uchihas[i] != null) {
+        if (indiceUchiha > 0) {
+            for (int i = 0; i < indiceUchiha; i++) {
                 uchihas[i].mostrarInformacoes();
-                System.out.println("Posição: " + indiceUchihas[indice]);
+                System.out.println("Posição: " + indiceUchihas[i]);
                 System.out.println();
             }
+        } else {
+            System.out.println("Não há Uchihas cadastrados.");
         }
     }
 
     public void atualizarHabilidadeEspecial(Scanner entrada) {
-        System.out.print("Digite a posição do Uchiha que deseja atualizar a habilidade: ");
-        int posicao = entrada.nextInt();
-        entrada.nextLine();
-        boolean posicaoInexistente = true;
-        for (int i = 0; i < uchihas.length; i++) {
-            if (posicao == indiceUchihas[indice] && uchihas[i] != null) {
-                System.out.print("Digite a habilidade especial: ");
-                uchihas[i].habilidadeEspecial = entrada.nextLine();
-                posicaoInexistente = false;
+        if (indiceUchiha > 0) {
+            System.out.print("Digite a posição do Uchiha que deseja atualizar a habilidade: ");
+            int posicao = entrada.nextInt();
+            entrada.nextLine();
+            boolean posicaoInexistente = true;
+            for (int i = 0; i < indiceUchiha; i++) {
+                if (posicao == indiceUchihas[i]) {
+                    System.out.print("Digite a habilidade especial: ");
+                    uchihas[i].habilidadeEspecial = entrada.nextLine();
+                    posicaoInexistente = false;
+                }
             }
-        }
-
-        if (posicaoInexistente) {
-            System.out.println("Posição inválida!");
+            if (posicaoInexistente) {
+                System.out.println("Posição inválida!");
+            }
+        } else {
+            System.out.println("Não há Uchihas cadastrados.");
         }
     }
 
