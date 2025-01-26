@@ -1,3 +1,7 @@
+package principal;
+
+import principal.Ninja;
+
 public class Uchiha extends Ninja {
     String habilidadeEspecial;
 

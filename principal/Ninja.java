@@ -1,3 +1,5 @@
+package principal;
+
 public class Ninja {
     String nome;
     int idade;
@@ -6,7 +8,7 @@ public class Ninja {
     String statusDaMissao;
 
     public void mostrarInformacoes() {
-        System.out.println("Informações do Ninja");
+        System.out.println("Informações do principal.Ninja");
         System.out.println("Nome: " + nome);
         System.out.println("Idade: " + idade);
         System.out.println("Missão: " + missao);
