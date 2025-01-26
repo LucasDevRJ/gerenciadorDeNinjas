@@ -3,6 +3,9 @@
 Projeto onde o usuário poderá criar ninjas/uchihas utilizando a orientação a objetos, classes e métodos por debaixo dos panos. Depois de adicionar o Ninja ou o Uchiha, também é possível lista-los e alterar a habilidade especial do Uchiha. E, por último, é possível finalizar o programa.
 
 ![image](https://github.com/user-attachments/assets/4a47c62a-0a9d-48cb-88b8-ec2ed2aad4d9)
+## Apresentação
+Gravei um <a href="https://www.linkedin.com/posts/lucas-pereira-de-lima-programador_programaaexaeto-java-naruto-activity-7289101281279799296-A8pN?utm_source=share&utm_medium=member_desktop">vídeo</a> apresentando o projeto. Nele eu detalho tudo sobre o projeto.
+
 ## Como acessar o projeto
 1. Tenha uma IDE que compile Java
 2. Baixe o projeto <a href="https://github.com/LucasDevRJ/gerenciadorDeNinjas/archive/refs/heads/main.zip">aqui</a>
