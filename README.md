@@ -5,7 +5,7 @@ Projeto onde o usuário poderá criar ninjas/uchihas utilizando a orientação a
 ![image](https://github.com/user-attachments/assets/4a47c62a-0a9d-48cb-88b8-ec2ed2aad4d9)
 ## Como acessar o projeto
 1. Tenha uma IDE que compile Java
-2. Baixe o projeto <a href="">aqui</a>
+2. Baixe o projeto <a href="https://github.com/LucasDevRJ/gerenciadorDeNinjas/archive/refs/heads/main.zip">aqui</a>
 3. Coloque o projeto na IDE
 4. Execute o projeto na classe Main
 ## Conteúdo
