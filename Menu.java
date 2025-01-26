@@ -8,10 +8,6 @@ public class Menu {
     int indiceNinja = 0;
     int indiceUchiha = 0;
 
-    public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.exibirMenuPrincipal();
-    }
     public void exibirMenuPrincipal() {
         int opcao;
         do {
@@ -87,10 +83,9 @@ public class Menu {
 
         uchihas[indiceUchiha] = uchiha;
         indiceUchihas[indiceUchiha] = indiceUchiha;
-        System.out.println(indiceUchihas[indiceUchiha]);
         indiceUchiha++;
-        System.out.println(indiceUchiha);
         System.out.println("O Uchiha " + uchiha.nome + " foi adicionado com sucesso.");
+        uchiha.mostrarHabilidadeEspecial();
     }
 
     public void preencheInformacoesDoNinja(Scanner entrada, Ninja ninja) {
